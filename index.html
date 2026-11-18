@@ -3,198 +3,1065 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELVET 18+ | Premium Entertainment</title>
+<meta name="theme-color" content="#09070b">
+<title>VELVET 18+ | After Dark</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  background:#100d12;color:#fff;
-  font-family:Arial,sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-header{
-  display:flex;justify-content:space-between;
-  align-items:center;padding:22px 7%;
-  background:#19131c;border-bottom:1px solid #392333;
+
+:root {
+  --bg: #09070b;
+  --panel: #171019;
+  --pink: #e9a0b7;
+  --text: #fff4f7;
+  --muted: #b4a4af;
+  --line: rgba(255,255,255,.12);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
 }
-.logo{font-size:27px;font-weight:bold;color:#ff386b}
-nav a{color:#ddd;text-decoration:none;margin:0 12px}
-.hero{
-  padding:90px 8%;
-  background:linear-gradient(110deg,#291020,#100d12 75%);
+
+html {
+  scroll-behavior: smooth;
 }
-.hero h1{font-size:48px;margin-bottom:15px}
-.hero h1 span{color:#ff386b}
-.hero p{color:#c9b9c4;line-height:1.7}
-.btn{
-  display:inline-block;background:#ed2860;
-  padding:13px 25px;border-radius:7px;
-  color:white;text-decoration:none;margin-top:22px;
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
 }
-.container{padding:35px 7%}
-.section-title{font-size:25px;margin-bottom:24px}
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:22px;
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.card{
-  background:#201923;border-radius:12px;
-  overflow:hidden;transition:.3s;
-  border:1px solid #342434;
+
+button, input {
+  font: inherit;
 }
-.card:hover{transform:translateY(-6px)}
-.thumb{
-  height:220px;display:flex;
-  align-items:center;justify-content:center;
-  background:linear-gradient(145deg,#742342,#28152d);
-  font-size:58px;
+
+button {
+  cursor: pointer;
 }
-.card:nth-child(2) .thumb{background:linear-gradient(145deg,#58346b,#25162d)}
-.card:nth-child(3) .thumb{background:linear-gradient(145deg,#a34a57,#301c36)}
-.card:nth-child(4) .thumb{background:linear-gradient(145deg,#63445d,#25152b)}
-.info{padding:17px}
-.info h3{margin-bottom:9px}
-.info p{font-size:13px;color:#c4b5c3}
-.tag{color:#ff6790;font-size:12px;margin-top:10px}
-.search{
-  background:#241c27;border:1px solid #514050;
-  color:white;padding:13px 16px;
-  width:100%;border-radius:8px;
-  margin-bottom:25px;
+
+/* AGE VERIFICATION */
+
+.age-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(ellipse at center, #54273d, #09070b 70%);
 }
-footer{
-  text-align:center;padding:30px;
-  color:#a99ba9;background:#19131c;
-  margin-top:40px;
+
+.age-card {
+  width: min(100%, 470px);
+  padding: 48px 35px;
+  text-align: center;
+  background: rgba(17,10,19,.95);
+  border: 1px solid rgba(233,160,183,.4);
+  box-shadow: 0 20px 100px #000;
 }
-#ageGate{
-  position:fixed;inset:0;background:#09070bf2;
-  display:flex;align-items:center;justify-content:center;
-  z-index:10;padding:20px;
+
+.age-card h1 {
+  font: 700 42px var(--serif);
+  margin: 22px 0 12px;
 }
-.modal{
-  background:#211622;border:1px solid #ff386b;
-  padding:35px;border-radius:15px;
-  max-width:420px;text-align:center;
+
+.age-card p {
+  color: var(--muted);
+  font-size: 13px;
 }
-.modal h2{color:#ff386b;margin-bottom:15px}
-.modal p{color:#ddd;line-height:1.6}
+
+.age-card .brand {
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.age-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.age-card small {
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* COMMON */
+
+.site-shell {
+  display: none;
+}
+
+.site-shell.unlocked {
+  display: block;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.brand-mark {
+  color: var(--pink);
+  font: italic 28px var(--serif);
+  border: 1px solid var(--pink);
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+}
+
+.brand-plus {
+  color: var(--pink);
+  border: 1px solid var(--pink);
+  font-size: 10px;
+  padding: 2px 5px;
+}
+
+.eyebrow {
+  color: var(--pink);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 22px;
+  border: 1px solid transparent;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: .25s;
+}
+
+.primary {
+  background: var(--pink);
+  color: #211018;
+}
+
+.primary:hover {
+  background: #f5c1d0;
+  transform: translateY(-2px);
+}
+
+.outline {
+  background: transparent;
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+.outline:hover {
+  background: rgba(233,160,183,.1);
+}
+
+/* HEADER */
+
+.topbar {
+  height: 80px;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(9,7,11,.94);
+  backdrop-filter: blur(15px);
+}
+
+.main-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.main-nav a {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main-nav a:hover {
+  color: var(--pink);
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 25px;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 680px;
+  padding: 90px 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 78% 45%, #432538, transparent 48%),
+    #0c080e;
+}
+
+.hero-content {
+  max-width: 520px;
+}
+
+.hero h1 {
+  font: 800 clamp(55px,7vw,95px)/1 var(--serif);
+  letter-spacing: -3px;
+  margin: 25px 0;
+}
+
+.hero h1 em,
+h2 em {
+  color: var(--pink);
+}
+
+.hero-copy {
+  color: var(--muted);
+  max-width: 400px;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.hero-art {
+  min-height: 450px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.hero-portrait {
+  width: 290px;
+  height: 410px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 48% 48% 8px 8px;
+  background:
+    linear-gradient(150deg,#d39a9e,#68394f 55%,#17101a);
+  box-shadow: 0 25px 90px #0009;
+}
+
+.hero-portrait::before {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 240px;
+  top: 65px;
+  left: 50px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    #f2c0b6,
+    #a65a72 65%,
+    transparent
+  );
+}
+
+.hero-portrait::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 290px;
+  bottom: -90px;
+  left: 40px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(90deg,#21131f,#704255,#21131f);
+}
+
+.portrait-caption {
+  position: absolute;
+  z-index: 2;
+  bottom: 25px;
+  left: 25px;
+  font: 700 34px/.95 var(--serif);
+}
+
+/* TICKER */
+
+.ticker {
+  text-align: center;
+  padding: 19px;
+  background: #120b13;
+  border-block: 1px solid var(--line);
+  color: var(--pink);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* SECTIONS */
+
+.section {
+  padding: 100px 10%;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.section-heading h2,
+.feature h2,
+.join-section h2 {
+  font: 700 clamp(40px,5vw,64px)/1.1 var(--serif);
+  margin-top: 15px;
+}
+
+.section-heading > p {
+  color: var(--muted);
+  max-width: 320px;
+  font-size: 13px;
+}
+
+/* FILTERS */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-chip {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 9px 14px;
+  font-size: 10px;
+}
+
+.filter-chip.selected,
+.filter-chip:hover {
+  background: var(--pink);
+  color: #211018;
+  border-color: var(--pink);
+}
+
+.search-box {
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  outline: none;
+  padding: 8px;
+  min-width: 190px;
+}
+
+/* CREATOR CARDS */
+
+.creator-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 35px 22px;
+}
+
+.creator-card {
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.creator-card:hover {
+  transform: translateY(-6px);
+}
+
+.creator-card img {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  background: var(--panel);
+}
+
+.creator-card h3 {
+  font: 600 21px var(--serif);
+  margin-top: 14px;
+}
+
+.creator-card p {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px;
+}
+
+/* FEATURE */
+
+.feature {
+  padding: 100px 12%;
+  min-height: 430px;
+  background:
+    radial-gradient(circle at 80% 50%,#9b526e,#392032 40%,#171019);
+}
+
+.feature h2 {
+  font-size: 65px;
+  margin: 20px 0;
+}
+
+.feature > p:last-child {
+  color: #d6c0cc;
+  max-width: 400px;
+  font-size: 13px;
+}
+
+/* STORIES */
+
+.stories {
+  padding-top: 100px;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.story-art {
+  height: 250px;
+  padding: 22px;
+  display: flex;
+  align-items: end;
+  font: 800 38px/.95 var(--serif);
+  background: linear-gradient(145deg,#a65d78,#281624);
+}
+
+.story-art.two {
+  background: linear-gradient(145deg,#c18a77,#49273a);
+}
+
+.story-art.three {
+  background: linear-gradient(145deg,#756081,#211725);
+}
+
+.story-grid h3 {
+  font: 600 18px var(--serif);
+  margin-top: 15px;
+}
+
+/* JOIN */
+
+.join-section {
+  text-align: center;
+  padding: 100px 20px;
+  background: radial-gradient(ellipse,#3a1c2b,transparent 70%);
+}
+
+.join-section h2 {
+  margin: 20px 0;
+}
+
+.join-section > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.signup-form {
+  display: flex;
+  max-width: 470px;
+  margin: 30px auto 15px;
+  gap: 10px;
+}
+
+.signup-form input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: white;
+  padding: 13px;
+  outline: none;
+}
+
+.join-section small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 50px 10% 25px;
+  border-top: 1px solid var(--line);
+}
+
+footer p {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 15px 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+  .hero {
+    padding: 70px 7%;
+  }
+
+  .section {
+    padding: 80px 7%;
+  }
+
+  .creator-card img {
+    height: 280px;
+  }
+}
+
+@media(max-width:700px) {
+  .topbar {
+    height: 70px;
+    padding: 0 6%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    background: #120b13;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 65px;
+  }
+
+  .hero h1 {
+    font-size: 65px;
+  }
+
+  .hero-art {
+    min-height: 400px;
+  }
+
+  .hero-portrait {
+    width: 250px;
+    height: 350px;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-heading > p {
+    margin-top: 15px;
+  }
+
+  .creator-grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px 14px;
+  }
+
+  .creator-card img {
+    height: 250px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature h2 {
+    font-size: 48px;
+  }
+}
+
+@media(max-width:400px) {
+  .creator-card img {
+    height: 205px;
+  }
+
+  .filter-chip {
+    padding: 8px 10px;
+  }
+
+  .signup-form {
+    flex-direction: column;
+  }
+
+  .age-actions {
+    flex-direction: column;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<div id="ageGate">
- <div class="modal">
-  <h2>VELVET 18+</h2>
-  <h3>Age Verification</h3>
-  <p>This demo is intended for adults aged 18 and above.</p>
-  <button class="btn" onclick="enterSite()">I AM 18+</button>
-  <p style="margin-top:15px;font-size:12px">Demo website only</p>
- </div>
+<!-- AGE SCREEN -->
+
+<div class="age-screen" id="ageScreen">
+  <div class="age-card">
+    <div class="brand">
+      <span class="brand-mark">V</span>
+      VELVET <span class="brand-plus">18+</span>
+    </div>
+
+    <p class="eyebrow">PRIVATE MEMBERS' LOUNGE</p>
+
+    <h1>Are you 18 or older?</h1>
+
+    <p>
+      This website is intended for adults only.
+      By entering, you confirm that you are at least 18 years old.
+    </p>
+
+    <div class="age-actions">
+      <button class="button primary" id="enterButton">
+        Yes, enter
+      </button>
+
+      <button class="button outline" id="leaveButton">
+        No, leave
+      </button>
+    </div>
+
+    <small>Fictional profiles · Non-explicit imagery · Adults only</small>
+  </div>
 </div>
 
-<header>
- <div class="logo">VELVET 18+</div>
- <nav>
-  <a href="#">Home</a>
-  <a href="#creators">Creators</a>
-  <a href="#trending">Trending</a>
- </nav>
+<!-- WEBSITE -->
+
+<div class="site-shell" id="siteShell">
+
+<header class="topbar">
+  <a class="brand" href="#home">
+    <span class="brand-mark">V</span>
+    VELVET <span class="brand-plus">18+</span>
+  </a>
+
+  <nav class="main-nav" id="mainNav">
+    <a href="#home">Discover</a>
+    <a href="#creators">Creators</a>
+    <a href="#collections">Collections</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <button class="menu-toggle" id="menuToggle">☰</button>
 </header>
 
-<section class="hero">
- <h1>Discover <span>Premium</span><br>Entertainment</h1>
- <p>Explore exclusive creator profiles, glamorous
- collections and premium entertainment experiences.</p>
- <a href="#creators" class="btn">Explore Now</a>
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+    <p class="eyebrow">THE ART OF AFTER DARK</p>
+
+    <h1>
+      Desire has<br>
+      <em>a new address.</em>
+    </h1>
+
+    <p class="hero-copy">
+      A curated destination for bold personalities,
+      cinematic style and the art of grown-up entertainment.
+    </p>
+
+    <a href="#creators" class="button primary">
+      Explore creators ↗
+    </a>
+  </div>
+
+  <div class="hero-art">
+    <div class="hero-portrait">
+      <div class="portrait-caption">
+        THE<br>AFTER<br>HOURS
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<section class="container" id="creators">
- <h2 class="section-title">Featured Creators</h2>
- <input class="search" id="search"
- placeholder="Search creators..."
- oninput="filterCards()">
+<div class="ticker">
+  ✦ BOLD PERSONALITIES
+  ✦ PREMIUM EDITORIAL
+  ✦ AFTER-HOURS STYLE
+  ✦ ADULTS ONLY
+</div>
 
- <div class="cards" id="creatorCards">
+<!-- CREATORS -->
 
-  <div class="card">
-   <div class="thumb">👩🏻</div>
-   <div class="info">
-    <h3>Alexandra</h3>
-    <p>Fashion & Lifestyle</p>
-    <div class="tag">★ FEATURED CREATOR</div>
-   </div>
+<section class="section" id="creators">
+
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">THE LINEUP</p>
+      <h2>Meet the <em>muses.</em></h2>
+    </div>
+
+    <p>
+      Discover fictional editorial personas
+      with distinct aesthetics and signature styles.
+    </p>
   </div>
 
-  <div class="card">
-   <div class="thumb">💃🏻</div>
-   <div class="info">
-    <h3>Isabella</h3>
-    <p>Glamour & Photography</p>
-    <div class="tag">★ TRENDING</div>
-   </div>
+  <div class="toolbar">
+
+    <div class="filter-tabs">
+      <button class="filter-chip selected" data-filter="all">
+        All profiles
+      </button>
+
+      <button class="filter-chip" data-filter="glamour">
+        Glamour
+      </button>
+
+      <button class="filter-chip" data-filter="fashion">
+        Fashion
+      </button>
+
+      <button class="filter-chip" data-filter="fitness">
+        Fitness
+      </button>
+
+      <button class="filter-chip" data-filter="cinema">
+        Cinema
+      </button>
+    </div>
+
+    <input
+      class="search-box"
+      type="search"
+      id="creatorSearch"
+      placeholder="Search profiles..."
+    >
+
   </div>
 
-  <div class="card">
-   <div class="thumb">👸🏻</div>
-   <div class="info">
-    <h3>Sophia</h3>
-    <p>Beauty & Fashion</p>
-    <div class="tag">★ POPULAR</div>
-   </div>
+  <div class="creator-grid" id="creatorGrid">
+
+    <article class="creator-card"
+      data-category="glamour"
+      data-name="aria monroe">
+
+      <img
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85"
+        alt="Editorial portrait of a model">
+
+      <h3>Aria Monroe</h3>
+      <p>Glamour · Los Angeles</p>
+    </article>
+
+    <article class="creator-card"
+      data-category="fashion"
+      data-name="celeste noir">
+
+      <img
+        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85"
+        alt="Editorial portrait of a model">
+
+      <h3>Celeste Noir</h3>
+      <p>Fashion · Paris</p>
+    </article>
+
+    <article class="creator-card"
+      data-category="fitness"
+      data-name="maya sterling">
+
+      <img
+        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=85"
+        alt="Editorial portrait of a model">
+
+      <h3>Maya Sterling</h3>
+      <p>Fitness · Miami</p>
+    </article>
+
+    <article class="creator-card"
+      data-category="cinema"
+      data-name="scarlett vale">
+
+      <img
+        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"
+        alt="Editorial portrait of a model">
+
+      <h3>Scarlett Vale</h3>
+      <p>Cinema · London</p>
+    </article>
+
+    <article class="creator-card"
+      data-category="glamour"
+      data-name="isla rose">
+
+      <img
+        src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85"
+        alt="Editorial portrait of a model">
+
+      <h3>Isla Rose</h3>
+      <p>Glamour · New York</p>
+    </article>
+
+    <article class="creator-card"
+      data-category="fashion"
+      data-name="naomi winters">
+
+      <img
+        src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=85"
+        alt="Editorial portrait of a model">
+
+      <h3>Naomi Winters</h3>
+      <p>Fashion · Milan</p>
+    </article>
+
   </div>
 
-  <div class="card">
-   <div class="thumb">✨</div>
-   <div class="info">
-    <h3>Victoria</h3>
-    <p>Premium Lifestyle</p>
-    <div class="tag">★ NEW CREATOR</div>
-   </div>
-  </div>
+  <p class="empty-state" id="emptyState" hidden>
+    No profiles found. Try another search.
+  </p>
 
- </div>
 </section>
 
-<section class="container" id="trending">
- <h2 class="section-title">Trending Collections</h2>
- <div class="cards">
-  <div class="card">
-   <div class="thumb">🎬</div>
-   <div class="info"><h3>Editor's Choice</h3>
-   <p>Curated entertainment collection</p></div>
-  </div>
-  <div class="card">
-   <div class="thumb">📸</div>
-   <div class="info"><h3>Glamour Studio</h3>
-   <p>Fashion photography</p></div>
-  </div>
-  <div class="card">
-   <div class="thumb">💎</div>
-   <div class="info"><h3>Premium Collection</h3>
-   <p>Exclusive creator showcase</p></div>
-  </div>
- </div>
+<!-- FEATURE -->
+
+<section class="feature" id="collections">
+
+  <p class="eyebrow">CURATED FOR YOU</p>
+
+  <h2>
+    Not just a look.<br>
+    <em>A whole mood.</em>
+  </h2>
+
+  <p>
+    Explore visual stories built around confidence,
+    style, nightlife and modern glamour.
+  </p>
+
 </section>
 
-<footer>
- <h3 style="color:#ff386b">VELVET 18+</h3>
- <p>Demo Entertainment Website | 2026</p>
- <p style="margin-top:10px">18+ Only | Privacy | Terms</p>
+<!-- STORIES -->
+
+<section class="section stories">
+
+  <p class="eyebrow">THE EDIT</p>
+
+  <h2>Inside the <em>lounge.</em></h2>
+
+  <div class="story-grid">
+
+    <article>
+      <div class="story-art">THE POWER<br>OF RED</div>
+      <h3>Making an entrance</h3>
+    </article>
+
+    <article>
+      <div class="story-art two">AFTER<br>DARK</div>
+      <h3>Five cities that never sleep</h3>
+    </article>
+
+    <article>
+      <div class="story-art three">OWN YOUR<br>SPACE</div>
+      <h3>Presence is the ultimate statement</h3>
+    </article>
+
+  </div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="join-section" id="join">
+
+  <p class="eyebrow">YOUR INVITATION</p>
+
+  <h2>Stay for the <em>afterglow.</em></h2>
+
+  <p>
+    Get the latest editorial drops,
+    creator spotlights and lounge updates.
+  </p>
+
+  <form class="signup-form" id="signupForm">
+
+    <input
+      type="email"
+      placeholder="Your email address"
+      required
+    >
+
+    <button class="button primary" type="submit">
+      Join the list ↗
+    </button>
+
+  </form>
+
+  <small id="formMessage">
+    This demo form is not connected to an email service.
+  </small>
+
+</section>
+
+</main>
+
+<footer id="about">
+
+  <a class="brand" href="#home">
+    <span class="brand-mark">V</span>
+    VELVET <span class="brand-plus">18+</span>
+  </a>
+
+  <p>
+    A fictional editorial concept for adults.
+    All featured personas are fictional.
+    Images are non-explicit editorial portraits.
+  </p>
+
+  <p>© 2026 VELVET. ALL RIGHTS RESERVED.</p>
+
 </footer>
 
+</div>
+
 <script>
-function enterSite(){
- document.getElementById('ageGate').style.display='none';
+/* AGE VERIFICATION */
+
+const ageScreen = document.getElementById("ageScreen");
+const siteShell = document.getElementById("siteShell");
+
+document.getElementById("enterButton").addEventListener("click", () => {
+  ageScreen.style.display = "none";
+  siteShell.classList.add("unlocked");
+});
+
+document.getElementById("leaveButton").addEventListener("click", () => {
+  document.querySelector(".age-card").innerHTML =
+    "<h1>Access declined</h1><p>This website is intended for adults only.</p>";
+});
+
+/* CREATOR FILTERS */
+
+const filterButtons = document.querySelectorAll(".filter-chip");
+const creatorCards = document.querySelectorAll(".creator-card");
+const searchInput = document.getElementById("creatorSearch");
+const emptyState = document.getElementById("emptyState");
+
+let activeFilter = "all";
+
+function filterCreators() {
+
+  let visibleCount = 0;
+  const searchText = searchInput.value.toLowerCase().trim();
+
+  creatorCards.forEach(card => {
+
+    const categoryMatch =
+      activeFilter === "all" ||
+      card.dataset.category === activeFilter;
+
+    const nameMatch =
+      card.dataset.name.includes(searchText);
+
+    const visible = categoryMatch && nameMatch;
+
+    card.hidden = !visible;
+
+    if (visible) visibleCount++;
+  });
+
+  emptyState.hidden = visibleCount !== 0;
 }
-function filterCards(){
- const q=document.getElementById('search').value.toLowerCase();
- document.querySelectorAll('#creatorCards .card').forEach(card=>{
-  card.style.display=card.innerText.toLowerCase().includes(q)
-   ?'block':'none';
- });
-}
+
+filterButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    filterButtons.forEach(item => {
+      item.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    activeFilter = button.dataset.filter;
+
+    filterCreators();
+  });
+
+});
+
+searchInput.addEventListener("input", filterCreators);
+
+/* MOBILE MENU */
+
+document.getElementById("menuToggle").addEventListener("click", () => {
+
+  document.getElementById("mainNav").classList.toggle("open");
+
+});
+
+document.querySelectorAll(".main-nav a").forEach(link => {
+
+  link.addEventListener("click", () => {
+    document.getElementById("mainNav").classList.remove("open");
+  });
+
+});
+
+/* NEWSLETTER FORM */
+
+document.getElementById("signupForm").addEventListener("submit", event => {
+
+  event.preventDefault();
+
+  document.getElementById("formMessage").textContent =
+    "Thanks for your interest! This is a front-end demo form.";
+
+  event.target.reset();
+
+});
 </script>
 
 </body>
